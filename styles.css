@@ -200,6 +200,15 @@ a:hover { color: var(--accent); }
   padding: 6rem 0;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  top: -100px; right: -200px;
+  background: radial-gradient(circle, rgba(59,142,243,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
 .hero::after {
   content: '';
   position: absolute;
