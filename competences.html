@@ -7,6 +7,197 @@
   <title>Compétences — Portfolio SISR · Lenny-Lou Jamet</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <style>
+    /* ── E5 Table Styles ── */
+    .e5-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 2rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+
+    .e5-table {
+      border-collapse: collapse;
+      min-width: 1400px;
+      width: 100%;
+      font-size: 0.72rem;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── Header rows ── */
+    .e5-table thead tr.bloc-row th {
+      padding: 8px 4px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid #30363d;
+      vertical-align: bottom;
+    }
+
+    .e5-table thead tr.subcomp-row th {
+      border: 1px solid #30363d;
+      padding: 4px 2px;
+      vertical-align: bottom;
+    }
+
+    .e5-table thead tr.subcomp-row th .rotate-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      display: block;
+      height: 160px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      line-height: 1.3;
+      padding: 4px 2px;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #c9d1d9;
+    }
+
+    /* Bloc colors */
+    .bloc-1 { background: #1a2744; border-bottom: 3px solid #3b82f6; }
+    .bloc-2 { background: #1a2e1a; border-bottom: 3px solid #22c55e; }
+    .bloc-3 { background: #2d1a3a; border-bottom: 3px solid #a855f7; }
+    .bloc-4 { background: #2e2100; border-bottom: 3px solid #f59e0b; }
+    .bloc-5 { background: #2a1a1a; border-bottom: 3px solid #ef4444; }
+    .bloc-6 { background: #1a2e2e; border-bottom: 3px solid #06b6d4; }
+
+    .sub-1 { background: rgba(59, 130, 246, 0.08); }
+    .sub-2 { background: rgba(34, 197, 94, 0.08); }
+    .sub-3 { background: rgba(168, 85, 247, 0.08); }
+    .sub-4 { background: rgba(245, 158, 11, 0.08); }
+    .sub-5 { background: rgba(239, 68, 68, 0.08); }
+    .sub-6 { background: rgba(6, 182, 212, 0.08); }
+
+    /* ── Body rows ── */
+    .e5-table tbody tr {
+      transition: background 0.15s;
+    }
+    .e5-table tbody tr:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .e5-table tbody tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+    .e5-table tbody tr:nth-child(even):hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .e5-table td {
+      border: 1px solid #21262d;
+      padding: 6px 8px;
+      vertical-align: middle;
+    }
+
+    /* Project name column */
+    .col-projet {
+      min-width: 200px;
+      max-width: 220px;
+      font-weight: 600;
+      color: #e6edf3;
+      line-height: 1.4;
+      padding: 8px 10px !important;
+    }
+
+    /* Date columns */
+    .col-date {
+      min-width: 80px;
+      text-align: center;
+      white-space: nowrap;
+      color: #8b949e;
+      font-size: 0.68rem;
+    }
+
+    /* Competency cell */
+    .e5-table td.comp-cell {
+      text-align: center;
+      padding: 6px 4px;
+      min-width: 32px;
+    }
+
+    /* Checkmark */
+    .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .check-1 { background: rgba(59,130,246,0.25); color: #60a5fa; }
+    .check-2 { background: rgba(34,197,94,0.25); color: #4ade80; }
+    .check-3 { background: rgba(168,85,247,0.25); color: #c084fc; }
+    .check-4 { background: rgba(245,158,11,0.25); color: #fbbf24; }
+    .check-5 { background: rgba(239,68,68,0.25); color: #f87171; }
+    .check-6 { background: rgba(6,182,212,0.25); color: #22d3ee; }
+
+    /* Section header info */
+    .e5-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      padding: 16px 20px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+    .e5-meta strong { color: #e6edf3; }
+
+    /* Legend */
+    .e5-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+    .e5-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .leg-1 { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .leg-2 { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .leg-3 { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .leg-4 { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .leg-5 { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    .leg-6 { background: rgba(6,182,212,0.15); color: #22d3ee; border: 1px solid rgba(6,182,212,0.3); }
+
+    .scroll-hint {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #484f58;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Totals row ── */
+    .e5-table tr.totals-row td {
+      background: #161b22;
+      font-weight: 700;
+      color: #e6edf3;
+      border-top: 2px solid #30363d;
+    }
+    .e5-table tr.totals-row td.comp-cell {
+      font-size: 0.78rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -34,112 +225,578 @@
 <main>
   <section class="page-header">
     <div class="container">
-      <span class="section-label">// référentiel BTS SIO SISR</span>
+      <span class="section-label">// tableau E5 — référentiel BTS SIO SISR</span>
       <h1>Compétences</h1>
-      <p class="page-subtitle">Tableau détaillé aligné sur le référentiel officiel</p>
+      <p class="page-subtitle">Tableau de synthèse des réalisations professionnelles — Session 2025</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <p class="section-intro">Ensemble de mes compétences développées durant ma formation BTS SIO option SISR, organisées selon le référentiel officiel. Chaque compétence est liée à un projet ou une expérience concrète.</p>
 
-      <div class="table-responsive">
-        <table class="competences-table">
+      <div class="e5-meta">
+        <span><strong>Candidat :</strong> Lenny-Lou JAMET</span>
+        <span><strong>Centre de formation :</strong> Lycée Sainte Marguerite</span>
+        <span><strong>Option :</strong> SISR</span>
+        <span><strong>Session :</strong> 2025</span>
+        <span><strong>Diplôme :</strong> BTS Services Informatiques aux Organisations</span>
+      </div>
+
+      <p class="scroll-hint">← DÉFILER HORIZONTALEMENT →</p>
+
+      <div class="e5-wrapper">
+        <table class="e5-table" aria-label="Tableau de synthèse des réalisations professionnelles E5">
           <thead>
-            <tr>
-              <th>Bloc</th>
-              <th>Compétence</th>
-              <th>Niveau</th>
-              <th>Projet / Expérience associé(e)</th>
+            <!-- Row 1 : Blocs -->
+            <tr class="bloc-row">
+              <th rowspan="2" style="min-width:200px; text-align:left; padding:8px 10px; border:1px solid #30363d;">Réalisation / Projet</th>
+              <th rowspan="2" style="min-width:80px; border:1px solid #30363d; color:#8b949e;">Début</th>
+              <th rowspan="2" style="min-width:80px; border:1px solid #30363d; color:#8b949e;">Fin</th>
+              <th colspan="6" class="bloc-1">B1 — Gérer le patrimoine informatique</th>
+              <th colspan="3" class="bloc-2">B2 — Répondre aux incidents &amp; demandes</th>
+              <th colspan="3" class="bloc-3">B3 — Présence en ligne</th>
+              <th colspan="3" class="bloc-4">B4 — Mode projet</th>
+              <th colspan="3" class="bloc-5">B5 — Mise à disposition service</th>
+              <th colspan="4" class="bloc-6">B6 — Développement professionnel</th>
+            </tr>
+            <!-- Row 2 : Sub-competencies (rotated) -->
+            <tr class="subcomp-row">
+              <!-- Bloc 1 -->
+              <th class="sub-1"><span class="rotate-text">Recenser et identifier les ressources numériques</span></th>
+              <th class="sub-1"><span class="rotate-text">Exploiter des référentiels, normes et standards</span></th>
+              <th class="sub-1"><span class="rotate-text">Mettre en place et vérifier les niveaux d'habilitation</span></th>
+              <th class="sub-1"><span class="rotate-text">Vérifier les conditions de continuité du service</span></th>
+              <th class="sub-1"><span class="rotate-text">Gérer des sauvegardes</span></th>
+              <th class="sub-1"><span class="rotate-text">Vérifier le respect des règles d'utilisation</span></th>
+              <!-- Bloc 2 -->
+              <th class="sub-2"><span class="rotate-text">Collecter, suivre et orienter des demandes</span></th>
+              <th class="sub-2"><span class="rotate-text">Traiter des demandes réseau, système et applicatifs</span></th>
+              <th class="sub-2"><span class="rotate-text">Traiter des demandes concernant les applications</span></th>
+              <!-- Bloc 3 -->
+              <th class="sub-3"><span class="rotate-text">Participer à la valorisation de l'image (médias numériques)</span></th>
+              <th class="sub-3"><span class="rotate-text">Référencer les services en ligne et mesurer leur visibilité</span></th>
+              <th class="sub-3"><span class="rotate-text">Participer à l'évolution d'un site Web</span></th>
+              <!-- Bloc 4 -->
+              <th class="sub-4"><span class="rotate-text">Analyser les objectifs et modalités d'organisation</span></th>
+              <th class="sub-4"><span class="rotate-text">Planifier les activités</span></th>
+              <th class="sub-4"><span class="rotate-text">Évaluer les indicateurs de suivi et analyser les écarts</span></th>
+              <!-- Bloc 5 -->
+              <th class="sub-5"><span class="rotate-text">Réaliser les tests d'intégration et d'acceptation</span></th>
+              <th class="sub-5"><span class="rotate-text">Déployer un service</span></th>
+              <th class="sub-5"><span class="rotate-text">Accompagner les utilisateurs dans la mise en place</span></th>
+              <!-- Bloc 6 -->
+              <th class="sub-6"><span class="rotate-text">Mettre en place son environnement d'apprentissage</span></th>
+              <th class="sub-6"><span class="rotate-text">Mettre en œuvre des outils et stratégies de veille</span></th>
+              <th class="sub-6"><span class="rotate-text">Gérer son identité professionnelle</span></th>
+              <th class="sub-6"><span class="rotate-text">Développer son projet professionnel</span></th>
             </tr>
           </thead>
           <tbody>
-            <!-- Bloc 1 -->
+
+            <!-- ── Réalisations en cours de formation ── -->
+
+            <!-- 1. Proxmox -->
             <tr>
-              <td rowspan="4">1. Support &amp; mise à disposition</td>
-              <td>Gérer le patrimoine informatique</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet1-details">Infrastructure AD</a></td>
-            </tr>
-            <tr>
-              <td>Répondre aux incidents et demandes d'assistance</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="stages.html">Stage La Nouvelle République</a></td>
-            </tr>
-            <tr>
-              <td>Développer la présence en ligne de l'organisation</td>
-              <td><span class="badge badge-intermediate">Intermédiaire</span></td>
-              <td><a href="index.html">Portfolio web</a></td>
-            </tr>
-            <tr>
-              <td>Travailler en mode projet</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html">Tous projets</a></td>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Haute disponibilité et virtualisation via Proxmox</a></td>
+              <td class="col-date">05/10/2025</td>
+              <td class="col-date">05/11/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
             </tr>
 
-            <!-- Bloc 2 -->
+            <!-- 2. Veille LinkedIn -->
             <tr>
-              <td rowspan="5">2. Administration systèmes &amp; réseaux</td>
-              <td>Concevoir une solution d'infrastructure réseau</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet1-details">pfSense + Squid</a></td>
-            </tr>
-            <tr>
-              <td>Installer, tester et déployer une solution</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet2-details">Supervision Centreon</a></td>
-            </tr>
-            <tr>
-              <td>Exploiter, dépanner et superviser une solution</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet2-details">Supervision Centreon</a></td>
-            </tr>
-            <tr>
-              <td>Administrer et sécuriser un équipement réseau</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="stages.html">Stage La Nouvelle République</a></td>
-            </tr>
-            <tr>
-              <td>Automatiser les tâches d'administration</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet3-details">Scripts PowerShell AD</a></td>
+              <td class="col-projet"><a href="veille.html" style="color:inherit;text-decoration:none;">Veille informationnelle via LinkedIn</a></td>
+              <td class="col-date">03/09/2024</td>
+              <td class="col-date">25/06/2026</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"></td>
             </tr>
 
-            <!-- Bloc 3 -->
+            <!-- 3. Usurpation / intranet -->
             <tr>
-              <td rowspan="3">3. Cybersécurité</td>
-              <td>Protéger les données à caractère personnel</td>
-              <td><span class="badge badge-intermediate">Intermédiaire</span></td>
-              <td><a href="projets.html#projet1-details">pfSense + Squid</a></td>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Usurpation et sécurisation de site intranet</a></td>
+              <td class="col-date">01/12/2025</td>
+              <td class="col-date">01/12/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
             </tr>
+
+            <!-- 4. Stack switch Cisco -->
             <tr>
-              <td>Préserver l'identité numérique</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="projets.html#projet1-details">pfSense + Squid</a></td>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Mise en place d'un stack de switch Cisco et de sa sécurisation</a></td>
+              <td class="col-date">06/06/2025</td>
+              <td class="col-date">11/06/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
             </tr>
+
+            <!-- 5. Partage Windows AGDLP -->
             <tr>
-              <td>Sécuriser les équipements et les usages</td>
-              <td><span class="badge badge-advanced">Avancé</span></td>
-              <td><a href="stages.html">Stage La Nouvelle République</a></td>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Mise en place partage Windows avec méthode AGDLP</a></td>
+              <td class="col-date">02/04/2025</td>
+              <td class="col-date">03/04/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
             </tr>
+
+            <!-- 6. Opmanager sur un switch -->
+            <tr>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Mise en place de OpManager sur un switch</a></td>
+              <td class="col-date">21/05/2025</td>
+              <td class="col-date">21/05/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 7. pfSense + Squid -->
+            <tr>
+              <td class="col-projet"><a href="projets.html#projet1-details" style="color:inherit;text-decoration:none;">Mise en place de pfSense et Squid</a></td>
+              <td class="col-date">29/09/2025</td>
+              <td class="col-date">29/09/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 8. DHCP & DHCP Relay -->
+            <tr>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Déploiement DHCP &amp; DHCP Relay sur machine Linux</a></td>
+              <td class="col-date">04/03/2025</td>
+              <td class="col-date">04/03/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 9. Reverse proxy docker -->
+            <tr>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Intégration d'un reverse proxy avec Docker</a></td>
+              <td class="col-date">03/11/2025</td>
+              <td class="col-date">03/11/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 10. Auto-formation OpenClassrooms -->
+            <tr>
+              <td class="col-projet"><a href="apropos.html" style="color:inherit;text-decoration:none;">Auto-formation OpenClassrooms</a></td>
+              <td class="col-date">03/09/2024</td>
+              <td class="col-date">25/06/2026</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 11. Portfolio -->
+            <tr>
+              <td class="col-projet"><a href="index.html" style="color:inherit;text-decoration:none;">Création d'un portfolio</a></td>
+              <td class="col-date">03/09/2024</td>
+              <td class="col-date">25/06/2026</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"><span class="check check-3">✓</span></td>
+              <td class="comp-cell sub-3"><span class="check check-3">✓</span></td>
+              <td class="comp-cell sub-3"><span class="check check-3">✓</span></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+            </tr>
+
+            <!-- 12. Root-Me Cybersécurité -->
+            <tr>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Réalisation de défis Cybersécurité avec Root-Me</a></td>
+              <td class="col-date">03/09/2025</td>
+              <td class="col-date">25/06/2026</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <td class="comp-cell sub-2"></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"><span class="check check-6">✓</span></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- 13. GLPI -->
+            <tr>
+              <td class="col-projet"><a href="projets.html" style="color:inherit;text-decoration:none;">Mise en place avec GLPI d'un gestionnaire de parc informatique et de ticketing</a></td>
+              <td class="col-date">12/02/2025</td>
+              <td class="col-date">25/02/2025</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"><span class="check check-1">✓</span></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <td class="comp-cell sub-1"></td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <td class="comp-cell sub-2"><span class="check check-2">✓</span></td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <td class="comp-cell sub-3"></td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4"><span class="check check-4">✓</span></td>
+              <td class="comp-cell sub-4"></td>
+              <td class="comp-cell sub-4"></td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5"><span class="check check-5">✓</span></td>
+              <td class="comp-cell sub-5"></td>
+              <td class="comp-cell sub-5"></td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+              <td class="comp-cell sub-6"></td>
+            </tr>
+
+            <!-- ── Totals row ── -->
+            <tr class="totals-row">
+              <td class="col-projet" colspan="3" style="text-align:right; color:#8b949e; font-size:0.72rem;">TOTAL PAR COMPÉTENCE</td>
+              <!-- B1 -->
+              <td class="comp-cell sub-1" style="color:#60a5fa;">7</td>
+              <td class="comp-cell sub-1" style="color:#60a5fa;">4</td>
+              <td class="comp-cell sub-1" style="color:#60a5fa;">5</td>
+              <td class="comp-cell sub-1" style="color:#60a5fa;">2</td>
+              <td class="comp-cell sub-1" style="color:#60a5fa;">2</td>
+              <td class="comp-cell sub-1" style="color:#60a5fa;">4</td>
+              <!-- B2 -->
+              <td class="comp-cell sub-2" style="color:#4ade80;">2</td>
+              <td class="comp-cell sub-2" style="color:#4ade80;">7</td>
+              <td class="comp-cell sub-2" style="color:#4ade80;">1</td>
+              <!-- B3 -->
+              <td class="comp-cell sub-3" style="color:#c084fc;">1</td>
+              <td class="comp-cell sub-3" style="color:#c084fc;">1</td>
+              <td class="comp-cell sub-3" style="color:#c084fc;">1</td>
+              <!-- B4 -->
+              <td class="comp-cell sub-4" style="color:#fbbf24;">8</td>
+              <td class="comp-cell sub-4" style="color:#fbbf24;">3</td>
+              <td class="comp-cell sub-4" style="color:#fbbf24;">0</td>
+              <!-- B5 -->
+              <td class="comp-cell sub-5" style="color:#f87171;">7</td>
+              <td class="comp-cell sub-5" style="color:#f87171;">5</td>
+              <td class="comp-cell sub-5" style="color:#f87171;">0</td>
+              <!-- B6 -->
+              <td class="comp-cell sub-6" style="color:#22d3ee;">5</td>
+              <td class="comp-cell sub-6" style="color:#22d3ee;">2</td>
+              <td class="comp-cell sub-6" style="color:#22d3ee;">2</td>
+              <td class="comp-cell sub-6" style="color:#22d3ee;">1</td>
+            </tr>
+
           </tbody>
         </table>
+      </div><!-- /.e5-wrapper -->
+
+      <!-- Legend -->
+      <div class="e5-legend">
+        <div class="e5-legend-item leg-1">B1 — Gérer le patrimoine informatique</div>
+        <div class="e5-legend-item leg-2">B2 — Répondre aux incidents &amp; demandes</div>
+        <div class="e5-legend-item leg-3">B3 — Présence en ligne</div>
+        <div class="e5-legend-item leg-4">B4 — Mode projet</div>
+        <div class="e5-legend-item leg-5">B5 — Mise à disposition service</div>
+        <div class="e5-legend-item leg-6">B6 — Développement professionnel</div>
       </div>
 
-      <div class="competences-legend">
-        <h3>Légende des niveaux</h3>
-        <div class="legend-grid">
-          <div class="legend-item">
-            <span class="badge badge-advanced">Avancé</span>
-            <p>Maîtrise confirmée, autonomie complète</p>
-          </div>
-          <div class="legend-item">
-            <span class="badge badge-intermediate">Intermédiaire</span>
-            <p>Bonne compréhension, réalisable avec peu d'aide</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </main>
