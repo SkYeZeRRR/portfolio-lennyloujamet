@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projets — Réalisations techniques de Lenny-Lou Jamet">
+  <title>Projets — Portfolio SISR · Lenny-Lou Jamet</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-brand"><a href="portfoliosio.html">lj.sisr</a></div>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="portfoliosio.html">accueil</a></li>
+        <li><a href="apropos.html">à_propos</a></li>
+        <li><a href="projets.html" class="active">projets</a></li>
+        <li><a href="stages.html">stages</a></li>
+        <li><a href="competences.html">compétences</a></li>
+        <li><a href="veille.html">veille</a></li>
+        <li><a href="cv.html">cv</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">// réalisations techniques</span>
+      <h1>Mes Projets</h1>
+      <p class="page-subtitle">Administration systèmes, réseaux et sécurité</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-intro">Chaque projet est documenté sur GitHub et démontre des compétences concrètes acquises en BTS SIO SISR.</p>
+
+      <div class="projects-grid">
+
+        <!-- Projet 1 : pfSense + Squid -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="pfsense.png" alt="Écran de démarrage pfSense">
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Sécurité réseau</span>
+            <span class="project-tag">FreeBSD</span>
+            <span class="project-tag">VMware</span>
+            <h3>Installation pfSense + Squid</h3>
+            <p><strong style="color:var(--text-strong)">Contexte :</strong> Mise en place d'un pare-feu pfSense et intégration du proxy Squid pour renforcer la sécurité réseau et contrôler la navigation Internet en entreprise.</p>
+            <p><strong style="color:var(--text-strong)">Durée :</strong> 4 heures · Octobre 2025</p>
+            <p><strong style="color:var(--text-strong)">Stack :</strong> Windows Server 2022, FreeBSD, VMware</p>
+            <div class="project-actions">
+              <a href="#projet1-details" class="btn btn-secondary">Détails</a>
+              <a href="https://github.com/SkYeZeRRR/Procedure-installation-pfsense-et-squid/issues/1" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 2 : Centreon -->
+        <article class="project-card">
+          <div class="project-image">
+            <img src="centreon.png" alt="Logo Centreon">
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Supervision</span>
+            <span class="project-tag">SNMP</span>
+            <span class="project-tag">Linux</span>
+            <h3>Serveur de Supervision Centreon</h3>
+            <p><strong style="color:var(--text-strong)">Contexte :</strong> Mise en place d'une solution de monitoring centralisée pour superviser l'infrastructure réseau et les serveurs d'un environnement virtualisé.</p>
+            <p><strong style="color:var(--text-strong)">Durée :</strong> 4 heures · Octobre 2025</p>
+            <p><strong style="color:var(--text-strong)">Stack :</strong> Centreon, SNMP, Ubuntu Server, MySQL, Apache</p>
+            <div class="project-actions">
+              <a href="#projet2-details" class="btn btn-secondary">Détails</a>
+              <a href="https://github.com/SkYeZeRRR/Proc-dure-installation-Centreon/issues/1" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 3 : PowerShell AD -->
+        <article class="project-card">
+          <div class="project-image" style="display:flex;align-items:center;justify-content:center;background:var(--bg-elevated);">
+            <span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);opacity:.6">PS ></span>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">PowerShell</span>
+            <span class="project-tag">Active Directory</span>
+            <span class="project-tag">CSV</span>
+            <h3>Automatisation Gestion AD</h3>
+            <p><strong style="color:var(--text-strong)">Contexte :</strong> Suite de scripts PowerShell pour automatiser la création, modification et suppression de comptes utilisateurs dans Active Directory depuis un fichier CSV.</p>
+            <p><strong style="color:var(--text-strong)">Durée :</strong> 1 semaine · Octobre 2024</p>
+            <p><strong style="color:var(--text-strong)">Stack :</strong> PowerShell, Active Directory Module, CSV</p>
+            <div class="project-actions">
+              <a href="#projet3-details" class="btn btn-secondary">Détails</a>
+              <a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================== MODALS ======================== -->
+
+<div id="projet1-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>pfSense + Squid — Détails</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Déployer un pare-feu et un proxy pour gérer et restreindre la navigation web en entreprise.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Création d'une VM FreeBSD sous VMware</li>
+      <li>Installation et configuration de pfSense</li>
+      <li>Mise en place de règles de pare-feu par interface</li>
+      <li>Intégration du proxy Squid pour filtrage de contenu</li>
+      <li>Documentation complète avec schéma réseau</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Administration pare-feu, gestion de règles réseau, configuration proxy, virtualisation VMware</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Administrer et sécuriser un équipement réseau</p>
+  </div>
+</div>
+
+<div id="projet2-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Supervision Centreon — Détails</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Surveiller en temps réel l'état et les performances du système informatique pour détecter et alerter en cas d'anomalie.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Installation de Centreon sur Ubuntu Server</li>
+      <li>Configuration du protocole SNMP sur les équipements supervisés</li>
+      <li>Création de templates et d'hôtes dans Centreon</li>
+      <li>Configuration d'alertes par email</li>
+      <li>Mise en place de dashboards de visualisation en temps réel</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Supervision réseau, configuration Linux, SNMP, alerting, monitoring</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Exploiter, dépanner et superviser une solution</p>
+  </div>
+</div>
+
+<div id="projet3-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Automatisation PowerShell AD — Détails</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Réduire le temps de gestion des comptes utilisateurs et éliminer les erreurs manuelles en automatisant les opérations courantes.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Script de création de comptes en masse depuis un fichier CSV</li>
+      <li>Génération automatique de mots de passe sécurisés</li>
+      <li>Attribution automatique de groupes selon le service de l'utilisateur</li>
+      <li>Gestion des dossiers personnels et partages réseau</li>
+      <li>Journal détaillé des opérations (logging)</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, automatisation, gestion Active Directory, bonnes pratiques de sécurité</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Lenny-Lou Jamet · Portfolio BTS SIO SISR</p>
+    <p><a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

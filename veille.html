@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Veille Technologique — Cloud et Conteneurisation · Lenny-Lou Jamet">
+  <title>Veille — Portfolio SISR · Lenny-Lou Jamet</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-brand"><a href="portfoliosio.html">lj.sisr</a></div>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="portfoliosio.html">accueil</a></li>
+        <li><a href="apropos.html">à_propos</a></li>
+        <li><a href="projets.html">projets</a></li>
+        <li><a href="stages.html">stages</a></li>
+        <li><a href="competences.html">compétences</a></li>
+        <li><a href="veille.html" class="active">veille</a></li>
+        <li><a href="cv.html">cv</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">// cloud &amp; conteneurisation</span>
+      <h1>Veille Technologique</h1>
+      <p class="page-subtitle">Suivi des évolutions du secteur infrastructure IT</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-intro">Ma veille technologique porte sur les évolutions du cloud et de la conteneurisation — technologies clés pour l'avenir des systèmes et réseaux.</p>
+
+      <div class="veille-theme">
+        <h3>🎯 Thème : Cloud &amp; Conteneurisation</h3>
+        <p>Je me concentre sur les technologies <strong style="color:var(--text-strong)">Kubernetes</strong>, <strong style="color:var(--text-strong)">Docker</strong> et les solutions cloud hybrides (Azure, AWS) qui transforment profondément l'administration système traditionnelle.</p>
+        <p>Cette veille me permet de rester à jour, d'anticiper les évolutions du métier et de me préparer aux compétences recherchées dans les prochaines années. Elle est organisée autour d'outils dédiés (Feedly, Pocket, Notion) et d'une routine de lecture hebdomadaire.</p>
+      </div>
+
+      <!-- Sources -->
+      <h3 style="margin-bottom:1.25rem;">Sources et méthodes de veille</h3>
+      <div class="sources-grid">
+        <div class="source-card">
+          <h4>📰 Flux RSS &amp; Newsletters</h4>
+          <ul>
+            <li>LinuxFR.org</li>
+            <li>Le Monde Informatique</li>
+            <li>Kubernetes Blog officiel</li>
+            <li>DevOps Weekly Newsletter</li>
+            <li>CNCF (Cloud Native Computing Foundation)</li>
+          </ul>
+        </div>
+        <div class="source-card">
+          <h4>🎥 Contenu vidéo</h4>
+          <ul>
+            <li>TechWorld with Nana (YouTube)</li>
+            <li>Conférences DockerCon / KubeCon</li>
+            <li>Webinaires Microsoft Azure</li>
+            <li>AWS re:Invent talks</li>
+          </ul>
+        </div>
+        <div class="source-card">
+          <h4>💬 Communautés</h4>
+          <ul>
+            <li>Reddit r/sysadmin, r/kubernetes</li>
+            <li>Stack Overflow</li>
+            <li>Discord DevOps France</li>
+            <li>LinkedIn groupes IT</li>
+          </ul>
+        </div>
+        <div class="source-card">
+          <h4>📚 Documentation &amp; Labs</h4>
+          <ul>
+            <li>Documentation officielle Kubernetes</li>
+            <li>Microsoft Learn</li>
+            <li>Labs pratiques Katacoda</li>
+            <li>AWS Training</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Synthèse -->
+      <h3 style="margin:2.5rem 0 1.25rem;">Synthèse et observations récentes</h3>
+
+      <article class="veille-article">
+        <h4>Adoption croissante de Kubernetes en PME</h4>
+        <p class="date">Mars 2025</p>
+        <p>Kubernetes n'est plus réservé aux grandes entreprises. Les distributions légères (K3s, MicroK8s) permettent désormais aux PME de bénéficier de l'orchestration de conteneurs avec des ressources limitées. Cette tendance ouvre de nouvelles opportunités pour les administrateurs SISR.</p>
+        <p><strong style="color:var(--text-strong)">Impact sur le métier :</strong> Les compétences en conteneurisation deviennent progressivement incontournables, même pour des postes d'administration système classique. Les entreprises recherchent des profils hybrides capables de gérer infrastructures traditionnelles et environnements conteneurisés.</p>
+      </article>
+
+      <article class="veille-article">
+        <h4>Sécurité des conteneurs : enjeu majeur 2025</h4>
+        <p class="date">Février 2025</p>
+        <p>Les vulnérabilités dans les images Docker tierces posent un risque croissant. Les outils de scanning d'images (Trivy, Clair) deviennent indispensables dans les pipelines CI/CD. La gestion des secrets (Vault, Sealed Secrets) est également au cœur des préoccupations.</p>
+        <p><strong style="color:var(--text-strong)">Bonnes pratiques émergentes :</strong></p>
+        <ul>
+          <li>Scanner systématiquement les images avant déploiement</li>
+          <li>Utiliser des images minimales (Alpine, Distroless)</li>
+          <li>Ne jamais inclure de secrets dans les images</li>
+          <li>Appliquer le principe du moindre privilège aux conteneurs</li>
+        </ul>
+      </article>
+
+      <article class="veille-article">
+        <h4>Cloud hybride : modèle dominant pour les entreprises</h4>
+        <p class="date">Janvier 2025</p>
+        <p>Le cloud hybride (on-premise + cloud public) s'impose comme le modèle privilégié, permettant de combiner contrôle et flexibilité. Azure Arc et AWS Outposts facilitent la gestion unifiée des infrastructures distribuées.</p>
+        <p><strong style="color:var(--text-strong)">Avantages observés :</strong> Les entreprises conservent leurs données sensibles en interne tout en profitant de l'élasticité du cloud pour les pics de charge. Cette approche nécessite toutefois une expertise accrue en gestion multi-cloud.</p>
+      </article>
+
+      <article class="veille-article">
+        <h4>GitOps : la nouvelle approche d'administration</h4>
+        <p class="date">Décembre 2024</p>
+        <p>GitOps applique les principes du développement logiciel à l'infrastructure : tout est versionné dans Git, les déploiements sont déclaratifs et automatisés. ArgoCD et Flux facilitent cette approche pour Kubernetes.</p>
+        <p><strong style="color:var(--text-strong)">Mon analyse :</strong> Cette méthodologie transforme le rôle de l'administrateur système qui devient davantage "infrastructure as code developer". La maîtrise de Git et des principes CI/CD devient essentielle — une évolution directement en ligne avec mon parcours SISR.</p>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Lenny-Lou Jamet · Portfolio BTS SIO SISR</p>
+    <p><a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

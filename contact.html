@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact — Lenny-Lou Jamet">
+  <title>Contact — Portfolio SISR · Lenny-Lou Jamet</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-brand"><a href="portfoliosio.html">lj.sisr</a></div>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="portfoliosio.html">accueil</a></li>
+        <li><a href="apropos.html">à_propos</a></li>
+        <li><a href="projets.html">projets</a></li>
+        <li><a href="stages.html">stages</a></li>
+        <li><a href="competences.html">compétences</a></li>
+        <li><a href="veille.html">veille</a></li>
+        <li><a href="cv.html">cv</a></li>
+        <li><a href="contact.html" class="active">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">// get in touch</span>
+      <h1>Contact</h1>
+      <p class="page-subtitle">Envoyez-moi un message</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-intro">Vous avez un projet, une question ou souhaitez discuter d'une opportunité ? N'hésitez pas à me contacter.</p>
+
+      <div class="contact-wrapper">
+
+        <!-- Formulaire -->
+        <div class="contact-form">
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="nom">Nom complet <span class="required">*</span></label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required aria-required="true">
+              <span class="error-message" id="nom-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Adresse email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required aria-required="true">
+              <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="6" placeholder="Votre message..." required aria-required="true"></textarea>
+              <span class="error-message" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Envoyer →</button>
+          </form>
+
+          <div id="form-success" class="alert alert-success" style="display:none;" role="alert">
+            <strong>✓ Message envoyé !</strong> Je vous répondrai dans les plus brefs délais.
+          </div>
+          <div id="form-error" class="alert alert-error" style="display:none;" role="alert">
+            <strong>✗ Erreur d'envoi.</strong> Veuillez réessayer ou me contacter directement par email.
+          </div>
+        </div>
+
+        <!-- Infos de contact -->
+        <div class="contact-info">
+          <div class="contact-card">
+            <h4>Coordonnées directes</h4>
+            <a href="mailto:lennylou29jamet@gmail.com" class="contact-link">
+              <span class="link-icon">📧</span>
+              lennylou29jamet@gmail.com
+            </a>
+            <a href="tel:0642174073" class="contact-link">
+              <span class="link-icon">📱</span>
+              06 42 17 40 73
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <h4>Réseaux professionnels</h4>
+            <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener" class="contact-link">
+              <span class="link-icon">💼</span>
+              LinkedIn — Lenny-Lou Jamet
+            </a>
+            <a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener" class="contact-link">
+              <span class="link-icon">🐙</span>
+              GitHub — @SkYeZeRRR
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <h4>Localisation</h4>
+            <a class="contact-link" style="cursor:default;">
+              <span class="link-icon">📍</span>
+              Tours, Centre-Val de Loire
+            </a>
+            <a class="contact-link" style="cursor:default;">
+              <span class="link-icon">🎓</span>
+              Campus Sainte Marguerite, Chambray-lès-Tours
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Lenny-Lou Jamet · Portfolio BTS SIO SISR</p>
+    <p><a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
