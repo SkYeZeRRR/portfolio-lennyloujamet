@@ -6,20 +6,311 @@
   <meta name="description" content="Projets — Réalisations techniques de Lenny-Lou Jamet">
   <title>Projets — Portfolio SISR · Lenny-Lou Jamet</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    /* ── Carousel Swiper ─────────────────────────────────── */
+    .carousel-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .swiper {
+      width: 100%;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+      overflow: visible;
+    }
+    .swiper-slide {
+      background: rgba(18, 28, 40, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      width: 320px;
+      height: 480px;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,.5), 0 0 0 1px rgba(59,142,243,.2);
+      overflow: hidden;
+      position: relative;
+    }
+    .swiper-slide-active {
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,.7), 0 0 0 2px rgba(0,212,170,.5);
+      transform: scale(1.02);
+    }
+    .slide-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform .5s ease;
+    }
+    .swiper-slide:hover .slide-bg { transform: scale(1.05); }
+    .slide-bg-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(145deg, #0b1424, #07101f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #3b8ef3;
+      z-index: 0;
+    }
+    .slide-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(3,6,12,.95), rgba(3,6,12,.6) 60%, transparent);
+      padding: 1.5rem 1.2rem;
+      z-index: 2;
+    }
+    .slide-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: .3rem;
+    }
+    .slide-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: .5rem 0 .6rem;
+    }
+    .slide-tags span {
+      font-size: .65rem;
+      font-weight: 600;
+      background: rgba(0,212,170,.2);
+      padding: .2rem .6rem;
+      border-radius: 30px;
+      color: #00d4aa;
+      font-family: monospace;
+    }
+    .slide-desc {
+      font-size: .75rem;
+      color: #cbd5e6;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .project-actions {
+      display: flex;
+      gap: .7rem;
+      flex-wrap: wrap;
+      margin-top: .5rem;
+    }
+    /* Boutons dans les slides */
+    .project-actions .btn {
+      display: inline-block;
+      padding: .4rem 1rem;
+      border-radius: 40px;
+      font-family: monospace;
+      font-size: .7rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s ease;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid;
+    }
+    .project-actions .btn-secondary {
+      color: #e8f0fe;
+      border-color: #3b8ef3;
+    }
+    .project-actions .btn-secondary:hover {
+      background: #3b8ef3;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .project-actions .btn-procedure {
+      color: #00d4aa;
+      border-color: #00d4aa;
+    }
+    .project-actions .btn-procedure:hover {
+      background: #00d4aa;
+      color: #0a0f1e;
+      transform: translateY(-2px);
+    }
+    /* Flèches nav */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(20,30,55,.8);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: all .25s;
+      border: 1px solid rgba(59,142,243,.5);
+    }
+    .nav-btn:hover {
+      background: #1d4ed8;
+      border-color: #00d4aa;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .btn-prev { left: 1rem; }
+    .btn-prev::after { content: "❮"; font-size: 1.7rem; color: white; }
+    .btn-next { right: 1rem; }
+    .btn-next::after { content: "❯"; font-size: 1.7rem; color: white; }
+    .swiper-pagination { bottom: 0px !important; }
+    .swiper-pagination-bullet {
+      width: 10px; height: 10px;
+      background: #5d6f8f;
+      opacity: .6;
+      transition: all .2s;
+      margin: 0 6px !important;
+    }
+    .swiper-pagination-bullet-active {
+      background: #00d4aa;
+      opacity: 1;
+      width: 26px;
+      border-radius: 10px;
+    }
+
+    /* ── Modal PDF ───────────────────────────────────────── */
+    .modal-pdf {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-pdf.open { display: flex; }
+
+    .modal-pdf-content {
+      background: var(--bg-card, #0d1b30);
+      border: 1px solid rgba(59,142,243,.35);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 900px;
+      height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,.6);
+    }
+
+    .modal-pdf-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(59,142,243,.2);
+      flex-shrink: 0;
+    }
+
+    .modal-pdf-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .85rem;
+      color: #00d4aa;
+      letter-spacing: .05em;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .modal-pdf-title::before {
+      content: '📄';
+      font-size: 1rem;
+    }
+
+    .modal-pdf-actions {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+    }
+
+    .modal-pdf-download {
+      font-family: monospace;
+      font-size: .75rem;
+      padding: .35rem .9rem;
+      border-radius: 30px;
+      border: 1px solid #3b8ef3;
+      color: #3b8ef3;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .modal-pdf-download:hover { background: #3b8ef3; color: #fff; }
+
+    .modal-pdf-close {
+      background: none;
+      border: none;
+      color: #526180;
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color .2s;
+      padding: 0;
+    }
+    .modal-pdf-close:hover { color: #ef4444; }
+
+    .modal-pdf-body {
+      flex: 1;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+
+    .modal-pdf-body iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Fallback quand iframe bloqué */
+    .pdf-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 1rem;
+      color: #94a8c8;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .9rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .swiper-slide { width: 280px; height: 440px; }
+      .nav-btn { width: 38px; height: 38px; }
+      .btn-prev { left: .2rem; }
+      .btn-next { right: .2rem; }
+      .modal-pdf-content { height: 92vh; }
+    }
+    @media (max-width: 480px) {
+      .swiper-slide { width: 260px; height: 420px; }
+      .project-actions { gap: .5rem; }
+      .project-actions .btn { padding: .3rem .8rem; font-size: .65rem; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="container">
-      <div class="nav-brand"><a href="index.html">lj.sisr</a></div>
+      <div class="nav-brand"><a href="portfoliosio.html">lj.sisr</a></div>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu">
-        <li><a href="index.html">accueil</a></li>
-        <li><a href="apropos.html">à propos</a></li>
+        <li><a href="portfoliosio.html">accueil</a></li>
+        <li><a href="apropos.html">à_propos</a></li>
         <li><a href="projets.html" class="active">projets</a></li>
         <li><a href="stages.html">stages</a></li>
         <li><a href="competences.html">compétences</a></li>
@@ -35,84 +326,159 @@
   <section class="page-header">
     <div class="container">
       <span class="section-label">// réalisations techniques</span>
-      <h1>Mes Projets</h1>
+      <h1>Mes <span class="outline">Projets</span></h1>
       <p class="page-subtitle">Administration systèmes, réseaux et sécurité</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <p class="section-intro">Chaque projet est documenté sur GitHub et démontre des compétences concrètes acquises en BTS SIO SISR.</p>
+      <p class="section-intro">Chaque projet est documenté et démontre des compétences concrètes acquises en BTS SIO SISR.</p>
 
-      <div class="projects-grid">
+      <!-- ── CARROUSEL SWIPER ── -->
+      <div class="carousel-container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
 
-        <!-- Projet 1 : pfSense + Squid -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="pfsense.png" alt="Écran de démarrage pfSense">
-          </div>
-          <div class="project-content">
-            <span class="project-tag">Sécurité réseau</span>
-            <span class="project-tag">FreeBSD</span>
-            <span class="project-tag">VMware</span>
-            <h3>Installation pfSense + Squid</h3>
-            <p><strong style="color:var(--text-strong)">Contexte :</strong> Mise en place d'un pare-feu pfSense et intégration du proxy Squid pour renforcer la sécurité réseau et contrôler la navigation Internet en entreprise.</p>
-            <p><strong style="color:var(--text-strong)">Durée :</strong> 4 heures · Octobre 2025</p>
-            <p><strong style="color:var(--text-strong)">Stack :</strong> Windows Server 2022, FreeBSD, VMware</p>
-            <div class="project-actions">
-              <a href="#projet1-details" class="btn btn-secondary">Détails</a>
-              <a href="https://github.com/SkYeZeRRR/Procedure-installation-pfsense-et-squid/issues/1" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            <!-- Projet 1 : pfSense + Squid -->
+            <div class="swiper-slide">
+              <img class="slide-bg" src="pfsense.png" alt="pfSense"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">🔒 pfSense</div>
+              <div class="slide-content">
+                <h3>Installation pfSense + Squid</h3>
+                <div class="slide-tags">
+                  <span>#Sécurité réseau</span><span>#FreeBSD</span><span>#VMware</span>
+                </div>
+                <div class="slide-desc">Mise en place d'un pare-feu pfSense et intégration du proxy Squid pour renforcer la sécurité réseau et contrôler la navigation en entreprise.</div>
+                <div class="project-actions">
+                  <a href="#projet1-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('pfsens.et.squid.pdf', 'Procédure — pfSense + Squid')">Procédure</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
 
-        <!-- Projet 2 : Centreon -->
-        <article class="project-card">
-          <div class="project-image">
-            <img src="centreon.png" alt="Logo Centreon">
-          </div>
-          <div class="project-content">
-            <span class="project-tag">Supervision</span>
-            <span class="project-tag">SNMP</span>
-            <span class="project-tag">Linux</span>
-            <h3>Serveur de Supervision Centreon</h3>
-            <p><strong style="color:var(--text-strong)">Contexte :</strong> Mise en place d'une solution de monitoring centralisée pour superviser l'infrastructure réseau et les serveurs d'un environnement virtualisé.</p>
-            <p><strong style="color:var(--text-strong)">Durée :</strong> 4 heures · Octobre 2025</p>
-            <p><strong style="color:var(--text-strong)">Stack :</strong> Centreon, SNMP, Ubuntu Server, MySQL, Apache</p>
-            <div class="project-actions">
-              <a href="#projet2-details" class="btn btn-secondary">Détails</a>
-              <a href="https://github.com/SkYeZeRRR/Proc-dure-installation-Centreon/issues/1" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            <!-- Projet 2 : Centreon -->
+            <div class="swiper-slide">
+              <img class="slide-bg" src="centreon.png" alt="Centreon"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">📊 Centreon</div>
+              <div class="slide-content">
+                <h3>Serveur de Supervision Centreon</h3>
+                <div class="slide-tags">
+                  <span>#Supervision</span><span>#SNMP</span><span>#Linux</span>
+                </div>
+                <div class="slide-desc">Monitoring centralisé avec Centreon, configuration SNMP, alertes email et dashboards temps réel pour l'infrastructure.</div>
+                <div class="project-actions">
+                  <a href="#projet2-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('Procedure.centreon.pdf', 'Procédure — Centreon')">Procédure</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
 
-        <!-- Projet 3 : PowerShell AD -->
-        <article class="project-card">
-          <div class="project-image" style="display:flex;align-items:center;justify-content:center;background:var(--bg-elevated);">
-            <span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);opacity:.6">PS ></span>
-          </div>
-          <div class="project-content">
-            <span class="project-tag">PowerShell</span>
-            <span class="project-tag">Active Directory</span>
-            <span class="project-tag">CSV</span>
-            <h3>Automatisation Gestion AD</h3>
-            <p><strong style="color:var(--text-strong)">Contexte :</strong> Suite de scripts PowerShell pour automatiser la création, modification et suppression de comptes utilisateurs dans Active Directory depuis un fichier CSV.</p>
-            <p><strong style="color:var(--text-strong)">Durée :</strong> 1 semaine · Octobre 2024</p>
-            <p><strong style="color:var(--text-strong)">Stack :</strong> PowerShell, Active Directory Module, CSV</p>
-            <div class="project-actions">
-              <a href="#projet3-details" class="btn btn-secondary">Détails</a>
-              <a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener" class="btn btn-tertiary">GitHub →</a>
+            <!-- Projet 3 : PowerShell AD -->
+            <div class="swiper-slide">
+              <div class="slide-bg-placeholder" style="display:flex;">PS &gt;_</div>
+              <div class="slide-content">
+                <h3>Automatisation Gestion AD</h3>
+                <div class="slide-tags">
+                  <span>#PowerShell</span><span>#Active Directory</span><span>#CSV</span>
+                </div>
+                <div class="slide-desc">Suite de scripts PowerShell pour automatiser la création, modification et suppression de comptes utilisateurs AD depuis un fichier CSV.</div>
+                <div class="project-actions">
+                  <a href="#projet3-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('procedure_ad.pdf', 'Procédure — PowerShell AD')">Procédure</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
 
+            <!-- Projet 4 : PowerShell AD - Groupes -->
+            <div class="swiper-slide">
+              <div class="slide-bg-placeholder" style="display:flex;">⚙️ AD</div>
+              <div class="slide-content">
+                <h3>Automatisation Gestion AD</h3>
+                <div class="slide-tags">
+                  <span>#PowerShell</span><span>#Groupes</span><span>#Logging</span>
+                </div>
+                <div class="slide-desc">Génération automatique de mots de passe sécurisés, attribution de groupes selon le service, journal détaillé des opérations.</div>
+                <div class="project-actions">
+                  <a href="#projet4-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('powershell-groupes.pdf', 'Procédure — Groupes AD')">Procédure</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 5 : PowerShell AD - CSV -->
+            <div class="swiper-slide">
+              <div class="slide-bg-placeholder" style="display:flex;">📁 CSV</div>
+              <div class="slide-content">
+                <h3>Automatisation Gestion AD</h3>
+                <div class="slide-tags">
+                  <span>#PowerShell</span><span>#Bulk import</span><span>#Sécurité</span>
+                </div>
+                <div class="slide-desc">Création en masse de comptes utilisateurs et gestion des dossiers personnels / partages réseau.</div>
+                <div class="project-actions">
+                  <a href="#projet5-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('powershell-csv.pdf', 'Procédure — Import CSV')">Procédure</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 6 : PowerShell AD - Reporting -->
+            <div class="swiper-slide">
+              <div class="slide-bg-placeholder" style="display:flex;">🔧 Scripts</div>
+              <div class="slide-content">
+                <h3>Automatisation Gestion AD</h3>
+                <div class="slide-tags">
+                  <span>#PowerShell</span><span>#Reporting</span><span>#Bonnes pratiques</span>
+                </div>
+                <div class="slide-desc">Scripts complets avec gestion d'erreurs, logs centralisés et intégration à l'interface d'administration.</div>
+                <div class="project-actions">
+                  <a href="#projet6-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('powershell-reporting.pdf', 'Procédure — Reporting')">Procédure</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="nav-btn btn-prev"></div>
+          <div class="nav-btn btn-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
+      <!-- ── FIN CARROUSEL ── -->
+
     </div>
   </section>
 </main>
 
-<!-- ======================== MODALS ======================== -->
+<!-- ════════════════════════════════════════════════════════
+     MODAL PDF VISIONNEUSE
+════════════════════════════════════════════════════════ -->
+<div id="pdfModal" class="modal-pdf" role="dialog" aria-modal="true" aria-label="Visionneuse de procédure">
+  <div class="modal-pdf-content">
+    <div class="modal-pdf-header">
+      <span class="modal-pdf-title" id="pdfModalTitle">Procédure</span>
+      <div class="modal-pdf-actions">
+        <a id="pdfDownloadBtn" href="#" download class="modal-pdf-download">⬇ Télécharger</a>
+        <button class="modal-pdf-close" onclick="closePdf()" aria-label="Fermer">×</button>
+      </div>
+    </div>
+    <div class="modal-pdf-body">
+      <iframe id="pdfFrame" src="" title="Visionneuse PDF"></iframe>
+      <div class="pdf-fallback" id="pdfFallback">
+        <span style="font-size:3rem;">📄</span>
+        <p>Le PDF ne peut pas s'afficher directement dans le navigateur.</p>
+        <a id="pdfFallbackLink" href="#" download class="modal-pdf-download" style="font-size:.9rem;padding:.5rem 1.5rem;">⬇ Télécharger le PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- ════════════════════════════════════════════════════════
+     MODALS DÉTAILS
+════════════════════════════════════════════════════════ -->
 <div id="projet1-details" class="modal">
   <div class="modal-content">
     <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
@@ -153,16 +519,65 @@
   <div class="modal-content">
     <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
     <h3>Automatisation PowerShell AD — Détails</h3>
-    <p><strong style="color:var(--text-strong)">Objectif :</strong> Réduire le temps de gestion des comptes utilisateurs et éliminer les erreurs manuelles en automatisant les opérations courantes.</p>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Réduire le temps de gestion des comptes utilisateurs et éliminer les erreurs manuelles.</p>
     <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
     <ul>
       <li>Script de création de comptes en masse depuis un fichier CSV</li>
       <li>Génération automatique de mots de passe sécurisés</li>
-      <li>Attribution automatique de groupes selon le service de l'utilisateur</li>
+      <li>Attribution automatique de groupes selon le service</li>
       <li>Gestion des dossiers personnels et partages réseau</li>
       <li>Journal détaillé des opérations (logging)</li>
     </ul>
-    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, automatisation, gestion Active Directory, bonnes pratiques de sécurité</p>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, automatisation, gestion Active Directory</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+  </div>
+</div>
+
+<div id="projet4-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Automatisation PowerShell AD — Groupes</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Automatiser l'attribution des groupes et la gestion des droits dans Active Directory.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Attribution automatique de groupes selon le service de l'utilisateur</li>
+      <li>Gestion dynamique des appartenances aux groupes de sécurité</li>
+      <li>Journal détaillé des opérations effectuées</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, gestion AD, sécurité des accès</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+  </div>
+</div>
+
+<div id="projet5-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Automatisation PowerShell AD — Import CSV</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Créer des comptes utilisateurs en masse depuis un fichier CSV structuré.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Script de création en masse depuis fichier CSV</li>
+      <li>Génération automatique de mots de passe sécurisés</li>
+      <li>Gestion des dossiers personnels et partages réseau</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, gestion AD, traitement de données CSV</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+  </div>
+</div>
+
+<div id="projet6-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Automatisation PowerShell AD — Reporting</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Produire des rapports automatiques sur l'état de l'Active Directory.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Scripts avec gestion d'erreurs complète</li>
+      <li>Logs centralisés avec horodatage</li>
+      <li>Intégration à l'interface d'administration</li>
+      <li>Rapports exportables au format HTML/CSV</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, reporting, bonnes pratiques de développement</p>
     <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
   </div>
 </div>
@@ -170,9 +585,104 @@
 <footer class="footer">
   <div class="container">
     <p>© 2025 Lenny-Lou Jamet · Portfolio BTS SIO SISR</p>
-    <p><a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener">LinkedIn</a></p>
+    <p>
+      <a href="https://github.com/SkYeZeRRR" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lenny-lou-jamet-6957a727b" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
   </div>
 </footer>
 
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+  // ── Swiper init ──────────────────────────────────────────
+  (function () {
+    new Swiper('.mySwiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      autoplay: { delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true },
+      speed: 800,
+      coverflowEffect: { rotate: 45, stretch: -15, depth: 180, modifier: 1.2, slideShadows: true },
+      navigation: { nextEl: '.btn-next', prevEl: '.btn-prev' },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      keyboard: { enabled: true },
+      breakpoints: {
+        0:   { coverflowEffect: { rotate: 35, stretch: -10, depth: 130, modifier: 1 } },
+        768: { coverflowEffect: { rotate: 45, stretch: -15, depth: 180, modifier: 1.1 } }
+      }
+    });
+  })();
+
+  // ── Modals "détails" (ancre hash) ───────────────────────
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) window.location.hash = '';
+    });
+  });
+
+  // ── Visionneuse PDF ─────────────────────────────────────
+  const pdfModal      = document.getElementById('pdfModal');
+  const pdfFrame      = document.getElementById('pdfFrame');
+  const pdfTitle      = document.getElementById('pdfModalTitle');
+  const pdfDownload   = document.getElementById('pdfDownloadBtn');
+  const pdfFallback   = document.getElementById('pdfFallback');
+  const pdfFallbackLk = document.getElementById('pdfFallbackLink');
+
+  function openPdf(filename, title) {
+    // Met à jour le titre et le lien de téléchargement
+    pdfTitle.textContent   = title;
+    pdfDownload.href       = filename;
+    pdfDownload.download   = filename;
+    pdfFallbackLk.href     = filename;
+    pdfFallbackLk.download = filename;
+
+    // Charge l'iframe
+    pdfFrame.src     = filename;
+    pdfFallback.style.display = 'none';
+    pdfFrame.style.display    = 'block';
+
+    // Ouvre la modal
+    pdfModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Détection échec de chargement iframe (fichier absent, CORS…)
+    pdfFrame.onerror = showFallback;
+    pdfFrame.onload  = function () {
+      // Si l'iframe est vide ou bloquée, affiche le fallback
+      try {
+        const doc = pdfFrame.contentDocument || pdfFrame.contentWindow.document;
+        if (!doc || doc.body.innerHTML === '') showFallback();
+      } catch (e) {
+        // Cross-origin : le PDF est chargé normalement
+      }
+    };
+  }
+
+  function showFallback() {
+    pdfFrame.style.display    = 'none';
+    pdfFallback.style.display = 'flex';
+  }
+
+  function closePdf() {
+    pdfModal.classList.remove('open');
+    document.body.style.overflow = '';
+    // Vide l'iframe pour arrêter le chargement
+    setTimeout(() => { pdfFrame.src = ''; }, 300);
+  }
+
+  // Fermeture au clic sur le fond
+  pdfModal.addEventListener('click', e => {
+    if (e.target === pdfModal) closePdf();
+  });
+
+  // Fermeture avec Échap
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && pdfModal.classList.contains('open')) closePdf();
+  });
+</script>
 </body>
 </html>
