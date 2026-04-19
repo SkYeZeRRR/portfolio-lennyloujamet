@@ -378,7 +378,9 @@
 
             <!-- Projet 3 : PowerShell AD -->
             <div class="swiper-slide">
-              <div class="slide-bg-placeholder" style="display:flex;">PS &gt;_</div>
+              <img class="slide-bg" src="AD.webp" alt="AD"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">AD</div>
               <div class="slide-content">
                 <h3>Automatisation Gestion AD</h3>
                 <div class="slide-tags">
@@ -392,50 +394,74 @@
               </div>
             </div>
 
-            <!-- Projet 4 : PowerShell AD - Groupes -->
+            <!-- Projet 4 : GLPI -->
             <div class="swiper-slide">
-              <div class="slide-bg-placeholder" style="display:flex;">⚙️ AD</div>
+              <img class="slide-bg" src="GLPI.webp" alt="GLPI"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">GLPI</div>
               <div class="slide-content">
-                <h3>Automatisation Gestion AD</h3>
+                <h3>Installation de GLPI</h3>
                 <div class="slide-tags">
-                  <span>#PowerShell</span><span>#Groupes</span><span>#Logging</span>
+                  <span>#Gestion_Parc</span><span>#Ticketing</span>
                 </div>
-                <div class="slide-desc">Génération automatique de mots de passe sécurisés, attribution de groupes selon le service, journal détaillé des opérations.</div>
+                <div class="slide-desc">Mise en Place de GLPI pour la gestion d'un parc informatique et du ticketing</div>
                 <div class="project-actions">
                   <a href="#projet4-details" class="btn btn-secondary">Détails</a>
-                  <button class="btn btn-procedure" onclick="openPdf('powershell-groupes.pdf', 'Procédure — Groupes AD')">Procédure</button>
+                  <button class="btn btn-procedure" onclick="openPdf('Procedure_GLPI.pdf', 'Procédure — GLPI')">Procédure</button>
                 </div>
               </div>
             </div>
 
-            <!-- Projet 5 : PowerShell AD - CSV -->
+            <!-- Projet 5 : ADGLP -->
             <div class="swiper-slide">
-              <div class="slide-bg-placeholder" style="display:flex;">📁 CSV</div>
+              <img class="slide-bg" src="ADGLP.webp" alt="ADGLP"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">ADGLP</div>
               <div class="slide-content">
-                <h3>Automatisation Gestion AD</h3>
+                <h3>Partage Windows avec méthode AGDLP</h3>
                 <div class="slide-tags">
-                  <span>#PowerShell</span><span>#Bulk import</span><span>#Sécurité</span>
+                  <span>#Partage</span><span>#windows</span>
                 </div>
-                <div class="slide-desc">Création en masse de comptes utilisateurs et gestion des dossiers personnels / partages réseau.</div>
+                <div class="slide-desc">Création d'un partage Windows avec méthode AGDLP.</div>
                 <div class="project-actions">
                   <a href="#projet5-details" class="btn btn-secondary">Détails</a>
-                  <button class="btn btn-procedure" onclick="openPdf('powershell-csv.pdf', 'Procédure — Import CSV')">Procédure</button>
+                  <button class="btn btn-procedure" onclick="openPdf('Procedure_AGDLP_GUI.pdf', 'Procédure — Import CSV')">Procédure</button>
                 </div>
               </div>
             </div>
 
-            <!-- Projet 6 : PowerShell AD - Reporting -->
+            <!-- Projet 6 : DHCP & DHCP Relay Linux -->
             <div class="swiper-slide">
-              <div class="slide-bg-placeholder" style="display:flex;">🔧 Scripts</div>
+              <img class="slide-bg" src="dhcp-server-linux.jpg" alt="ADGLP"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">ADGLP</div>
               <div class="slide-content">
-                <h3>Automatisation Gestion AD</h3>
+                <h3>DHCP & DHCP Relay Linux</h3>
                 <div class="slide-tags">
-                  <span>#PowerShell</span><span>#Reporting</span><span>#Bonnes pratiques</span>
+                  <span>#DHCP</span><span>#Haute-disponibilité</span><span>#Linux</span>
                 </div>
-                <div class="slide-desc">Scripts complets avec gestion d'erreurs, logs centralisés et intégration à l'interface d'administration.</div>
+                <div class="slide-desc">Mise en place d'un DHCP et d'un DHCP Relay sous Linux.</div>
                 <div class="project-actions">
                   <a href="#projet6-details" class="btn btn-secondary">Détails</a>
-                  <button class="btn btn-procedure" onclick="openPdf('powershell-reporting.pdf', 'Procédure — Reporting')">Procédure</button>
+                  <button class="btn btn-procedure" onclick="openPdf('Procedure-dhcp-&-dhcp-relay-linux.pdf', 'Procédure — Reporting')">Procédure</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 7 : Attaque MITM -->
+            <div class="swiper-slide">
+              <img class="slide-bg" src="mitm.jpg" alt="AttackMITM"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-bg-placeholder" style="display:none;">ADGLP</div>
+              <div class="slide-content">
+                <h3>Attaque MITM SSH & Contre-mesures</h3>
+                <div class="slide-tags">
+                  <span>#MITM</span><span>#Fail</span><span>#Linux</span><span>#Sécurisation</span>
+                </div>
+                <div class="slide-desc">Simuler une attaque de l'homme du milieu (Man-in-the-Middle) sur un service SSH dans un environnement virtualisé</div>
+                <div class="project-actions">
+                  <a href="#projet7-details" class="btn btn-secondary">Détails</a>
+                  <button class="btn btn-procedure" onclick="openPdf('procedure_mitm_ssh.pdf', 'Procédure — Reporting')">Procédure</button>
                 </div>
               </div>
             </div>
@@ -447,6 +473,7 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
+    </div>
       <!-- ── FIN CARROUSEL ── -->
 
     </div>
@@ -536,49 +563,80 @@
 <div id="projet4-details" class="modal">
   <div class="modal-content">
     <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
-    <h3>Automatisation PowerShell AD — Groupes</h3>
-    <p><strong style="color:var(--text-strong)">Objectif :</strong> Automatiser l'attribution des groupes et la gestion des droits dans Active Directory.</p>
+    <h3>GLPI — Gestion de Parc Informatique & Ticketing</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Déployer et configurer GLPI, solution open source de gestion de parc informatique et de helpdesk, sur un serveur Linux avec une stack LAMP complète.</p>
     <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
     <ul>
-      <li>Attribution automatique de groupes selon le service de l'utilisateur</li>
-      <li>Gestion dynamique des appartenances aux groupes de sécurité</li>
-      <li>Journal détaillé des opérations effectuées</li>
+      <li>Mise en place de l'environnement serveur Linux (Debian) avec Apache, MariaDB et PHP</li>
+      <li>Installation et configuration de GLPI 10.x</li>
+      <li>Paramétrage de la CMDB pour l'inventaire des actifs informatiques (postes, périphériques, logiciels)</li>
+      <li>Configuration du module de ticketing selon les bonnes pratiques ITIL (incidents, demandes, changements)</li>
+      <li>Intégration avec un annuaire LDAP / Active Directory pour l'import automatique des utilisateurs</li>
+      <li>Gestion des profils d'accès et des droits utilisateurs</li>
+      <li>Documentation complète de la procédure d'installation et de configuration</li>
     </ul>
-    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, gestion AD, sécurité des accès</p>
-    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Administration Linux, déploiement d'application web (LAMP), gestion de base de données MariaDB, intégration LDAP/AD, concepts ITIL, gestion de parc informatique</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Maintenir et exploiter l'infrastructure et les services d'un système d'information</p>
   </div>
 </div>
 
 <div id="projet5-details" class="modal">
   <div class="modal-content">
     <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
-    <h3>Automatisation PowerShell AD — Import CSV</h3>
-    <p><strong style="color:var(--text-strong)">Objectif :</strong> Créer des comptes utilisateurs en masse depuis un fichier CSV structuré.</p>
+    <h3>Active Directory — Méthode AGDLP</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Mettre en place une gestion structurée des droits d'accès aux ressources partagées en entreprise via la méthode AGDLP (Accounts, Global groups, Domain Local groups, Permissions) sous Windows Server.</p>
     <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
     <ul>
-      <li>Script de création en masse depuis fichier CSV</li>
-      <li>Génération automatique de mots de passe sécurisés</li>
-      <li>Gestion des dossiers personnels et partages réseau</li>
+      <li>Création d'une hiérarchie d'Unités d'Organisation (OU) dans Active Directory</li>
+      <li>Mise en place de comptes utilisateurs et de groupes Globaux par service (Comptabilité, RH, Direction, Informatique)</li>
+      <li>Création de groupes Domaine Local avec niveaux d'accès distincts (Lecture, Modification, Contrôle Total)</li>
+      <li>Imbrication des groupes selon la chaîne AGDLP : A → G → DL → P</li>
+      <li>Configuration d'un partage réseau SMB et application des permissions NTFS par groupe Domaine Local</li>
+      <li>Déploiement automatique des lecteurs réseau via stratégie de groupe (GPO) avec ciblage par groupe AD</li>
+      <li>Tests de validation des accès et documentation de la procédure complète</li>
     </ul>
-    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, gestion AD, traitement de données CSV</p>
-    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Administration Active Directory, gestion des droits NTFS/SMB, stratégies de groupe (GPO), structuration des accès réseau, virtualisation Windows Server</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Administrer et sécuriser les ressources d'un domaine Windows</p>
   </div>
 </div>
 
 <div id="projet6-details" class="modal">
   <div class="modal-content">
     <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
-    <h3>Automatisation PowerShell AD — Reporting</h3>
-    <p><strong style="color:var(--text-strong)">Objectif :</strong> Produire des rapports automatiques sur l'état de l'Active Directory.</p>
+    <h3>DHCP & DHCP Relay — Linux (Debian)</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Mettre en place un service DHCP centralisé avec relais DHCP sur des machines virtuelles Debian sous VMware Workstation, permettant la distribution automatique d'adresses IP à travers plusieurs réseaux segmentés.</p>
     <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
     <ul>
-      <li>Scripts avec gestion d'erreurs complète</li>
-      <li>Logs centralisés avec horodatage</li>
-      <li>Intégration à l'interface d'administration</li>
-      <li>Rapports exportables au format HTML/CSV</li>
+      <li>Déploiement de 3 machines virtuelles Debian 12 sous VMware Workstation (Serveur DHCP, Routeur, Client)</li>
+      <li>Installation et configuration du service <code>isc-dhcp-server</code> avec déclaration des plages d'adresses et options réseau</li>
+      <li>Création et attribution des LAN Segments VMware (SERVEUR, CLIENT) pour isoler les réseaux</li>
+      <li>Configuration du routeur Debian avec 3 interfaces réseau (LAN SERVEUR, LAN CLIENT, NAT)</li>
+      <li>Mise en place du service DHCP Relay (<code>isc-dhcp-relay</code>) pour relayer les requêtes DHCP entre les segments réseau</li>
+      <li>Activation de l'IP Forwarding et configuration du NAT via iptables pour donner accès à Internet aux clients</li>
+      <li>Phase de tests : vérification de l'attribution des adresses IP et de la connectivité Internet depuis le client</li>
     </ul>
-    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Scripting PowerShell, reporting, bonnes pratiques de développement</p>
-    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Automatiser les tâches d'administration</p>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Administration Linux, configuration réseau (interfaces, routage, NAT), service DHCP, DHCP Relay, virtualisation VMware Workstation, segmentation réseau</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 2 — Administrer et sécuriser les équipements et services d'un réseau</p>
+  </div>
+</div>
+
+<div id="projet7-details" class="modal">
+  <div class="modal-content">
+    <a href="#" class="modal-close" aria-label="Fermer">&times;</a>
+    <h3>Attaque MITM SSH & Contre-mesures — Cybersécurité</h3>
+    <p><strong style="color:var(--text-strong)">Objectif :</strong> Simuler une attaque de l'homme du milieu (Man-in-the-Middle) sur un service SSH dans un environnement virtualisé sous VMware, puis analyser les vulnérabilités exploitées et mettre en place des contre-mesures adaptées.</p>
+    <p><strong style="color:var(--text-strong)">Réalisations :</strong></p>
+    <ul>
+      <li>Déploiement d'une maquette réseau sous VirtualBox composée de 4 machines virtuelles (serveur SSH Debian, client SSH Debian, attaquant Kali Linux, routeur OpenBSD)</li>
+      <li>Reconnaissance réseau avec <code>nmap</code> pour identifier les hôtes et services exposés</li>
+      <li>Mise en œuvre d'une attaque ARP Spoofing avec <code>ettercap</code> pour intercepter les communications entre le client et le serveur SSH</li>
+      <li>Exploitation de la vulnérabilité via l'outil <code>ssh-mitm</code> et redirection de flux avec <code>iptables</code> pour capturer les identifiants en clair</li>
+      <li>Analyse des trames réseau avec Wireshark pour comprendre le déroulement de l'attaque</li>
+      <li>Mise en place de contre-mesures : authentification par paires de clés ECDSA, désactivation de l'authentification par mot de passe, publication des empreintes via le protocole SSHFP dans la zone DNS</li>
+      <li>Durcissement du service OpenSSH selon les recommandations ANSSI : restriction des algorithmes de chiffrement autorisés, séparation des privilèges, limitation des accès utilisateurs, changement de port</li>
+    </ul>
+    <p><strong style="color:var(--text-strong)">Compétences mobilisées :</strong> Cryptographie (symétrique, asymétrique, hachage), exploitation de vulnérabilités ARP, analyse de trames réseau, administration OpenSSH, sécurisation de services réseau, Kali Linux, ethical hacking</p>
+    <p><strong style="color:var(--text-strong)">Lien référentiel :</strong> Bloc 3 — Cybersécurité des services informatiques</p>
   </div>
 </div>
 
